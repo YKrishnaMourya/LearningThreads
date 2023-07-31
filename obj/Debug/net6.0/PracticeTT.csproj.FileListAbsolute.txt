@@ -1,0 +1,15 @@
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.csproj.AssemblyReference.cache
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.AssemblyInfoInputs.cache
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.AssemblyInfo.cs
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.csproj.CoreCompileInputs.cache
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\bin\Debug\net6.0\PracticeTT.exe
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\bin\Debug\net6.0\PracticeTT.deps.json
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\bin\Debug\net6.0\PracticeTT.runtimeconfig.json
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\bin\Debug\net6.0\PracticeTT.dll
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\bin\Debug\net6.0\PracticeTT.pdb
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.dll
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\refint\PracticeTT.dll
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.pdb
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\PracticeTT.genruntimeconfig.cache
+C:\Users\krishna.mourya\CSharpProjects\PracticeTT\obj\Debug\net6.0\ref\PracticeTT.dll
