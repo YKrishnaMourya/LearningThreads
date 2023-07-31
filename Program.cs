@@ -10,10 +10,15 @@ void SampleWork()
     Console.WriteLine("Work Done");
 }
 
+var threadOne = new Thread(SampleWork);
+var threadTwo = new Thread(SampleWork);
 var watch = Stopwatch.StartNew();
 
-SampleWork();
-SampleWork();
+threadOne.Start();
+threadTwo.Start();
+
+threadOne.Join();
+threadTwo.Join();
 
 watch.Stop();
 
