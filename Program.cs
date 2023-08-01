@@ -2,28 +2,22 @@
 using static System.Console;
 using System.Diagnostics;
 using System.Threading;
+using System.Data;
 
-void SampleWork(object? filename)
+void AsynchronusDownload(string fileName)
 {
-    if (filename != null) 
-    {
-        string message = (string)filename;
-        Console.WriteLine($"Work Started {message}");
+    
+        Console.WriteLine($"Started Downloading {fileName}");
         Thread.Sleep(3000);
-        Console.WriteLine("Work Done");
-    }
+        Console.WriteLine($"Completed Downloading {fileName}");
 }
 
-var threadOne = new Thread(() => SampleWork("Thread One"));
-var threadTwo = new Thread(() => SampleWork("Thread Two"));
-var watch = Stopwatch.StartNew();
+List<string> fileNames = new() {
+    "file One",
+    "file Two",
+    "file Three",
+};
 
-threadOne.Start();
-threadTwo.Start();
+fileNames.ForEach(fileName => ThreadPool.QueueUserWorkItem((state) => AsynchronusDownload(fileName)));
 
-threadOne.Join();
-threadTwo.Join();
-
-watch.Stop();
-
-Console.WriteLine($"It took {watch.Elapsed.Seconds} second(s) to complete.");
+Console.ReadLine();
