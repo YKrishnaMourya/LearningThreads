@@ -4,12 +4,13 @@ using System.Diagnostics;
 using System.Threading;
 using System.Data;
 
-static void AsynchronusDownload(string fileName)
+static string AsynchronusDownload(string fileName)
 {
     
         Console.WriteLine($"Started Downloading {fileName}");
         Thread.Sleep(3000);
         Console.WriteLine($"Completed Downloading {fileName}");
+        return fileName;
 }
 
 // List<string> fileNames = new() {
@@ -20,14 +21,14 @@ static void AsynchronusDownload(string fileName)
 var watch = Stopwatch.StartNew();
 
 
-var taskOne = new Task(() => AsynchronusDownload("File One"));
-var taskTwo = new Task(() => AsynchronusDownload("File Two"));
+var taskOne = Task.Run(() => AsynchronusDownload("File One"));
+Task<string> taskTwo = Task.Run(() => AsynchronusDownload("File Two"));
 
-taskOne.Start();
-taskTwo.Start();
 
+Thread.Sleep(3100);
 
 watch.Stop();
+Console.WriteLine($"Downloads: {taskOne.Result}, {taskTwo.Result}");
 Console.WriteLine($"It took {watch.Elapsed.Seconds} second(s) to complete.");
 
 
