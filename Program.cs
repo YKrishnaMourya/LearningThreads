@@ -6,30 +6,41 @@ using System.Data;
 
 static string AsynchronusDownload(string fileName)
 {
-    
-        Console.WriteLine($"Started Downloading {fileName}");
-        Thread.Sleep(3000);
-        Console.WriteLine($"Completed Downloading {fileName}");
-        return fileName;
+    var threadId = Thread.CurrentThread.ManagedThreadId;
+    var threadPool = Thread.CurrentThread.IsThreadPoolThread;
+
+    Console.WriteLine($"The thread #{threadId}, use a thread pool {threadPool}");
+    Console.WriteLine($"Started Downloading {fileName}");
+    Thread.Sleep(3000);
+    return fileName;
 }
+var threadId = Thread.CurrentThread.ManagedThreadId;
+var threadPool = Thread.CurrentThread.IsThreadPoolThread;
 
-// List<string> fileNames = new() {
-//     "file One",
-//     "file Two",
-//     "file Three",
-// };
-var watch = Stopwatch.StartNew();
-
+Console.WriteLine($"The thread #{threadId}, use a thread pool {threadPool}");
+var result = "No Download";
 
 var taskOne = Task.Run(() => AsynchronusDownload("File One"));
-Task<string> taskTwo = Task.Run(() => AsynchronusDownload("File Two"));
+
+taskOne.ContinueWith((taskOne) =>
+{
+
+    var threadId = Thread.CurrentThread.ManagedThreadId;
+    var threadPool = Thread.CurrentThread.IsThreadPoolThread;
+
+    Console.WriteLine($"The thread #{threadId}, use a thread pool {threadPool}");
+    result = taskOne.Result;
+    Console.WriteLine($"Completed Downloading {result}");
+});
 
 
-Thread.Sleep(3100);
+while(result == "No Download")
+{
+    Thread.Sleep(1000);
+    Console.WriteLine("Downloading");
+}
 
-watch.Stop();
-Console.WriteLine($"Downloads: {taskOne.Result}, {taskTwo.Result}");
-Console.WriteLine($"It took {watch.Elapsed.Seconds} second(s) to complete.");
+
 
 
 
