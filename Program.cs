@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Data;
 
-void AsynchronusDownload(string fileName)
+static void AsynchronusDownload(string fileName)
 {
     
         Console.WriteLine($"Started Downloading {fileName}");
@@ -12,12 +12,23 @@ void AsynchronusDownload(string fileName)
         Console.WriteLine($"Completed Downloading {fileName}");
 }
 
-List<string> fileNames = new() {
-    "file One",
-    "file Two",
-    "file Three",
-};
+// List<string> fileNames = new() {
+//     "file One",
+//     "file Two",
+//     "file Three",
+// };
+var watch = Stopwatch.StartNew();
 
-fileNames.ForEach(fileName => ThreadPool.QueueUserWorkItem((state) => AsynchronusDownload(fileName)));
 
-Console.ReadLine();
+var taskOne = new Task(() => AsynchronusDownload("File One"));
+var taskTwo = new Task(() => AsynchronusDownload("File Two"));
+
+taskOne.Start();
+taskTwo.Start();
+
+
+watch.Stop();
+Console.WriteLine($"It took {watch.Elapsed.Seconds} second(s) to complete.");
+
+
+
