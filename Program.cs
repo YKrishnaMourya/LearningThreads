@@ -14,12 +14,12 @@ void SampleWork(object? filename)
     }
 }
 
-var threadOne = new Thread(SampleWork);
-var threadTwo = new Thread(SampleWork);
+var threadOne = new Thread(() => SampleWork("Thread One"));
+var threadTwo = new Thread(() => SampleWork("Thread Two"));
 var watch = Stopwatch.StartNew();
 
-threadOne.Start("Thread One");
-threadTwo.Start("Thread Two");
+threadOne.Start();
+threadTwo.Start();
 
 threadOne.Join();
 threadTwo.Join();
