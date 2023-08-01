@@ -3,19 +3,23 @@ using static System.Console;
 using System.Diagnostics;
 using System.Threading;
 
-void SampleWork()
+void SampleWork(object? filename)
 {
-    Console.WriteLine("Work Started");
-    Thread.Sleep(3000);
-    Console.WriteLine("Work Done");
+    if (filename != null) 
+    {
+        string message = (string)filename;
+        Console.WriteLine($"Work Started {message}");
+        Thread.Sleep(3000);
+        Console.WriteLine("Work Done");
+    }
 }
 
 var threadOne = new Thread(SampleWork);
 var threadTwo = new Thread(SampleWork);
 var watch = Stopwatch.StartNew();
 
-threadOne.Start();
-threadTwo.Start();
+threadOne.Start("Thread One");
+threadTwo.Start("Thread Two");
 
 threadOne.Join();
 threadTwo.Join();
